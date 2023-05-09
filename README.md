@@ -1,1 +1,2 @@
-![Hooks](./assets/hooks-banner.jpg)
+React хуки
+![Hook](./assets/hooks-banner.jpg)
