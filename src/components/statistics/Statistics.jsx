@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import css from './statistics.module.css'
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
+
+    return (
 
     <div className={css.statistics} >
         <span>Good: {good}</span>
@@ -11,7 +13,9 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
         <span>Total: {total}</span>
         <span>Positive feddback: {positivePercentage}%</span>
     </div>
-);
+        
+    );
+};
 
 Statistics.propTypes = {
     good: PropTypes.number.isRequired,
