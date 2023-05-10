@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FeedbackOptions from "components/fedback-options/FeedbackOptions";
 import Statistics from "../statistics/Statistics";
 import Section from "../section/Section";
@@ -10,28 +10,34 @@ function Feedback() {
     let [good, setGood] = useState(0);
     let [neutral, setNeutral] = useState(0);
     let [bad, setBad] = useState(0);
-    let total = good + neutral + bad;
-    let positiveFeedback = Math.round(good * 100 / total)
+    let [total, setTotal] = useState(0);
+    let [positiveFeedback, setPositiveFeedback] = useState(0);
 
     function handleLeaveFeedback(event) {
 
         switch (event.target.name) {
             case 'good':
-                setGood(good + 1);
+                setGood(state => state + 1);
                 break;
             
             case 'neutral':
-                setNeutral(neutral + 1);
+                setNeutral(state => state + 1);
                 break;
             
             case 'bad':
-                setBad(bad + 1);
+                setBad(state => state + 1);
                 break;
             
             default:
                 return;
         };
     };
+
+    useEffect(() => {
+        setTotal(good + neutral + bad);
+        setPositiveFeedback(Math.round(good * 100 / total))
+    }, [good, neutral, bad, total]);
+
 
     return (
             <div className="feedback">
